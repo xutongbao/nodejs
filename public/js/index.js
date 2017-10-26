@@ -22,7 +22,8 @@ require(['config'], function (config){
             dataType: 'json',
             contentType: "application/json",
             success:function(resp){
-                console.log('success');
+                $('#message').val('')
+                console.log(resp.message);
             }
         });
     });
