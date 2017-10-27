@@ -30,3 +30,5 @@
 {"browser":{"name":"Chrome","version":"60.0.3112.78","major":"60"},"engine":{"name":"WebKit","version":"537.36"},"os":{"name":"Windows","version":"10"},"device":{},"cpu":{"architecture":"amd64"}}
 2017-10-27 09:40:08:88
 {"browser":{"name":"Chrome","version":"60.0.3112.78","major":"60"},"engine":{"name":"WebKit","version":"537.36"},"os":{"name":"Windows","version":"10"},"device":{},"cpu":{"architecture":"amd64"}}
+2017-10-27 01:52:55:浏览器信息
+{"browser":{"name":"Chrome","version":"60.0.3112.78","major":"60"},"engine":{"name":"WebKit","version":"537.36"},"os":{"name":"Android","version":"6.0"},"device":{"vendor":"LG","model":"Nexus 5","type":"mobile"},"cpu":{}}

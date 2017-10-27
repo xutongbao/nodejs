@@ -1,0 +1,1 @@
+2017-10-27 10:04:34:{"browser":{"name":"Chrome","version":"60.0.3112.78","major":"60"},"engine":{"name":"WebKit","version":"537.36"},"os":{"name":"Windows","version":"10"},"device":{},"cpu":{"architecture":"amd64"}}

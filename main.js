@@ -47,8 +47,26 @@ app.post('/POST/message', function (req, res) {
     saveMessage(message);
 });
 
+app.post('/POST/browserInfo', function (req, res) {
+    var ua = parser(req.headers['user-agent']);
+    delete ua.ua;
+    var browserMessage = JSON.stringify(ua);
+    console.log('browser:' + browserMessage);
+    res.send('');
+    saveBrowerInfo(browserMessage);
+});
+
 var saveMessage = function (message) {
     fs.appendFile('message.txt', getDatetime() + ':' + message + '\n',  function(err) {
+        if (err) {
+            return console.error(err);
+        }
+        console.log("数据写入成功！");
+    });
+};
+
+var saveBrowerInfo = function (message) {
+    fs.appendFile('browserInfo.txt', getDatetime() + ':' + message + '\n',  function(err) {
         if (err) {
             return console.error(err);
         }

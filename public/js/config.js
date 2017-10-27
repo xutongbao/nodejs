@@ -1,9 +1,11 @@
 define(function (){
-    var rootPath = "http://54.251.164.83:80/";
+    //var rootPath = "http://54.251.164.83:80/";
+    var rootPath = "http://127.0.0.1:8888/";
     var config = {
         index: {
             api:{
-                postMessage: rootPath + "POST/message"
+                postMessage: rootPath + "POST/message",
+                postBrowserInfo: rootPath + "POST/browserInfo"
             }
         }
     };

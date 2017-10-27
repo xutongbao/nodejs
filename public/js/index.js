@@ -3,7 +3,8 @@ require.config({
 });
 
 require(['config'], function (config){
-    var url = config.index.api.postMessage;
+    var postMessage = config.index.api.postMessage;
+    var postBrowserInfo = config.index.api.postBrowserInfo;
     $('#submit').click(function () {
         console.log('start');
         var data = {};
@@ -12,7 +13,7 @@ require(['config'], function (config){
         data.message = message;
         data = JSON.stringify(data);
         $.ajax({
-            url: url,
+            url: postMessage,
             async: true,
             crossDomain: true,
             type: "POST",
@@ -26,5 +27,19 @@ require(['config'], function (config){
                 console.log(resp.message);
             }
         });
+    });
+
+    $.ajax({
+        url: postBrowserInfo,
+        async: true,
+        crossDomain: true,
+        type: "POST",
+        cache: false,
+        xhrFields: {withCredentials: true},
+        data: {},
+        dataType: 'json',
+        contentType: "application/json",
+        success:function(resp){
+        }
     });
 });
