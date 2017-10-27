@@ -4,6 +4,7 @@ var util = require('util');
 var email   = require("emailjs");
 var express = require("express");
 var fs = require("fs");
+var parser = require("ua-parser-js");
 var config = require('./config').config;
 var app = express();
 var bodyParser = require('body-parser');
@@ -24,6 +25,10 @@ var emailServer  = email.server.connect({
 });
 
 app.post('/POST/message', function (req, res) {
+    var ua = parser(req.headers['user-agent']);
+    delete ua.ua;
+    var browserMessage = JSON.stringify(ua);
+    console.log('browser:' + browserMessage);
 
     console.log(req.body);
     var response = {
@@ -38,7 +43,8 @@ app.post('/POST/message', function (req, res) {
     //     console.log(err || message);
     // });
     res.send(response);
-    saveMessage(req.body.message);
+    var message = req.body.message + '\n' + browserMessage;
+    saveMessage(message);
 });
 
 var saveMessage = function (message) {
