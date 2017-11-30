@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript ES6 class实例</title>
+</head>
+<body>
+    <script type="text/javascript">
+        let say = 'say';
+        class Person {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+
+            toString() {
+                return (this.x + '的年龄是' + this.y + '岁')
+            }
+
+            [say]() {
+                return '你好';
+            }
+        }
+        var person = new Person('徐同保', 28);
+        console.log(person.toString()); //徐同保的年龄是28岁
+        console.log(typeof Person);   //function
+        console.log(Person === Person.prototype.constructor);  //true
+        console.log(person.constructor ===Person.prototype.constructor);  //true
+        Object.assign(Person.prototype, {
+            getSex() {
+                return 'man';
+            }
+        })
+        console.log(Object.keys(Person.prototype));  //["getSex"]
+        console.log(Object.getOwnPropertyNames(Person.prototype));  //["constructor", "toString", "say", "getSex"]
+        console.log(person.say());  //你好
+        //下面结果说明对象上有x,y属性,但是没有toString属性。也就是说x,y是定义在this对象上,toString定义在类上。
+        console.log(person.hasOwnProperty('x'));  //true
+        console.log(person.hasOwnProperty('y'));  //true
+        console.log(person.hasOwnProperty('toString'));  //false
+        console.log(person.__proto__.hasOwnProperty('toString'));  //true
+        let person1 = new Person('李雷', 27);
+        console.log(person.__proto__ === person1.__proto__)  //true
+        person.__proto__.say2 = function () {
+            return '欢迎';
+        }
+        console.log(person.say2());  //欢迎
+        console.log(person1.say2());  //欢迎
+
+        const Expression = class Expre{
+
+            static getAge(){
+                return '12';
+            }
+
+            getClassName(){
+                return "ClassName1= " +Expre.name + " ClassName2= " +Expression.name;
+            }
+
+        }
+        let exp = new Expression();
+        //let exp = new Expre();  //错误
+        console.log(exp.getClassName());  //ClassName1= Expre ClassName2= Expre
+        //console.log(Expre.getAge());  //错误
+        console.log(Expression.getAge());  //12
+
+        //立即执行
+        let person2 = new class{
+            constructor(props) {
+                this.props = props;
+            }
+            getProps(){
+                return this.props;
+            }
+
+        }('xutongbao');
+        console.log(person2.getProps());//xutongbao
+
+        class Student extends Person {
+            constructor(name, age) {
+                super(name, age);
+            }
+            study() {
+                return '正在学习';
+            }
+        }
+
+        let student = new Student('徐同保', 28);
+        console.log(student.toString());  //徐同保的年龄是28岁
+        console.log(student.study());     //正在学习
+    </script>
+</body>
+</html>

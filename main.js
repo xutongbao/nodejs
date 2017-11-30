@@ -6,6 +6,7 @@ var express = require("express");
 var fs = require("fs");
 var parser = require("ua-parser-js");
 var config = require('./config').config;
+var learnVue = require('./learnVue').learnVue;
 var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
@@ -91,7 +92,9 @@ var getDatetime = function () {
     return now;
 };
 
-var server = app.listen(8888, function () {
+learnVue.submitInfo(app);
+
+var server = app.listen(8889, function () {
     var host = server.address().address;
     var port = server.address().port;
 

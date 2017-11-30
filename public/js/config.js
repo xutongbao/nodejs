@@ -1,6 +1,6 @@
 define(function (){
     //var rootPath = "http://54.251.164.83:80/";
-    var rootPath = "http://127.0.0.1:8888/";
+    var rootPath = "http://127.0.0.1:8889/";
     var config = {
         index: {
             api:{
